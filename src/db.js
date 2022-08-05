@@ -1,6 +1,4 @@
-
-{
-  "jobs": [
+export const  jobs = [
      {
    "id": 1,
     "company": "Photosnap",
@@ -149,6 +147,6 @@
     "tools": ["React", "Sass"]
   }
   ]
-}
+
 
  

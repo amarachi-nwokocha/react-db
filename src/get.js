@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import TopImg from './images/bg-header-desktop.svg'
 import './App.css'
 import Results from "./filter";
+import {jobs} from './db'
 function FetchData() {
     const [error, setError] = useState(null);
-    const [items, setItems] = useState([])
+    // const [items, setItems] = useState([])
     const [value, setValue] = useState()
     const [selectedTag, setSelectedTag] = useState([])
     const [filteredData, setFilteredData] = useState(selectedTag)
@@ -24,15 +25,15 @@ function FetchData() {
   }
   // console.log(selectedTag);
   
- const filteredArr = items.filter(item=>
-  selectedTag.includes(item.level)
-  ||
-  selectedTag.includes(item.role)
-  ||
-  selectedTag.includes(item.languages)
-  ||
-  selectedTag.includes(item.tools)
-  )         
+//  const filteredArr = items.filter(item=>
+//   selectedTag.includes(item.level)
+//   ||
+//   selectedTag.includes(item.role)
+//   ||
+//   selectedTag.includes(item.languages)
+//   ||
+//   selectedTag.includes(item.tools)
+//   )         
   // console.log(filteredArr);
    // setItems(filteredArr)
 //console.log(items);
@@ -55,19 +56,19 @@ console.log('amara is  wonderful');
   }
    
  
-    useEffect(() => {
-        fetch('http://localhost:3000/jobs')
-          .then((res) => res.json())
-          .then(  (result) => {
-            setItems(result);
-          //  console.log(items);
-          },
-          (error) => {
-            setError(error);
-          }
-        ); }, []);          
+    // useEffect(() => {
+    //     fetch('http://localhost:3000/jobs')
+    //       .then((res) => res.json())
+    //       .then(  (result) => {
+    //         setItems(result);
+    //       //  console.log(items);
+    //       },
+    //       (error) => {
+    //         setError(error);
+    //       }
+    //     ); }, []);          
            
-        const mappedItems = items && items.map((item)=>(
+        const mappedItems = jobs.map((item)=>(
        
           <div className="card"  key ={item.id}>
              <div className="item">
@@ -110,9 +111,9 @@ console.log('amara is  wonderful');
               </div>
              </div>
            ))
-    if (error) {
-        return (<div>Error: {error.message}</div>)
-      } else  if (items){
+    // if (error) {
+    //     return (<div>Error: {error.message}</div>)
+    //   } else  if (){
         return(
             <div className="general-cont">
               <div className="top">
@@ -135,6 +136,5 @@ console.log('amara is  wonderful');
 
         
           
-}
 
 export default FetchData
